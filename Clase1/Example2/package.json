@@ -1,0 +1,16 @@
+{
+  "name": "example2",
+  "version": "1.0.0",
+  "description": "Example 2",
+  "main": "app.js",
+  "scripts": {},
+  "keywords": [
+    "example2",
+    "senpai"
+  ],
+  "author": "Senpai",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.29.1"
+  }
+}

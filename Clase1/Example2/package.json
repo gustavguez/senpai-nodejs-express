@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Example 2",
   "main": "app.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "node app.js"
+  },
   "keywords": [
     "example2",
     "senpai"

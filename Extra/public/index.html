@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" type="text/css" />
+    <title>Mi listado de grupos</title>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex">
+        <div class="w-1/2">
+            <div class="max-w-2xl mx-auto mt-4 p-4 sm:p-6 bg-white border-2 border-gray-200 text-center">
+                <h2 class="pb-8" style="font-size: 1.5em;">Listado de grupos</h2>
+        
+                <div class="w-full">
+                    <button id="list-groups-btn" class="w-80 p-4 m-4 rounded-md bg-green-400 text-white">
+                        Listar
+                    </button>
+                </div>
+        
+                <div id="list-groups" class="mt-4"></div>
+            </div>
+        </div>
+
+        <div class="w-1/2">
+            <div class="max-w-2xl mx-auto mt-4 p-4 sm:p-6 bg-white border-2 border-gray-200 text-center">
+                <h2 class="pb-4" style="font-size: 1.5em;">Agregar grupo</h2>
+        
+                <form id="group-form" method="POST" action="/api/groups">
+                    
+                    <div class="text-left text-gray-500">
+                        <label 
+                            for="name" 
+                            class="p-4 inline-block">Nombre</label>
+                        <input 
+                            id="name" 
+                            name="name" 
+                            type="text" 
+                            placeholder="Ingrese el nombre del grupo" 
+                            class="w-full p-4 border-2 border-gray-100 bg-gray-50 focus:outline-none"
+                            required>
+                    </div>
+
+                    <div class="text-left">
+                        <button id="group-form-submit" name="submit" class="w-full p-4 mt-6 rounded-md bg-green-400 text-white">
+                            Agregar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script>
+        //Elements
+        const listGroups = document.getElementById('list-groups');
+        const listGroupsBtn = document.getElementById('list-groups-btn');
+        const formGroup = document.getElementById('group-form');
+        const formSubmitBtn = document.getElementById('group-form-submit');
+
+        //Fetch groups
+        const fetchGroups = function(){
+            //Change button text to loading
+            listGroupsBtn.innerText = 'Buscando...';
+
+            //Clear container
+            listGroups.innerText = '';
+            
+            //Fetch url
+            fetch('/api/groups')
+                .then(response => response.json())
+                .then(function(data){
+                    //Set again button text
+                    listGroupsBtn.innerText = 'Listar';
+
+                    //Iterate data and append names
+                    data.forEach(function(group){
+                        listGroups.innerHTML += '<p class="p-2">' + group.name + '</p>';
+                    });
+                });
+        };
+
+        //Add group
+        const addGroup = function(e){
+            //Change button text to loading
+            formSubmitBtn.innerText = 'Agregando...';
+
+            // Store reference to form to make later code easier to read
+            const form = e.target;
+            const name = form.name.value;
+
+            // Post data using the Fetch API
+            fetch(form.action, {
+                method: form.method,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: name })
+            }).then(function(){
+                //Change button text to loading
+                formSubmitBtn.innerText = 'Agregar';
+
+                //Clear input
+                form.name.value = '';
+            });
+
+            //Prevent page reloads
+            e.preventDefault();
+        };
+
+        //Attach to click event
+        listGroupsBtn.onclick = fetchGroups;
+
+        //Attach to submit event
+        formGroup.onsubmit = addGroup;
+    </script>
+</body>
+</html>

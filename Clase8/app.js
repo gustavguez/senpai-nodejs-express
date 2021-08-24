@@ -11,11 +11,20 @@ app.use(express.urlencoded({
   extended: true
 }));
 
+//Decimos que todo lo que esta en una carpeta, lo sirva como archivo estatico
+app.use(express.static(path.join(__dirname, 'public')));
+
 //Declaramos una variable para guardar los usuarios
-const users = [];
+const users = [
+    {
+       "id": 1,
+       "name": "Senpai"
+    }
+];
 
 //Definir ruta /users GET
 app.get('/users', function(req, res) {
+    //buscar los users a la db
     res.send(users);
 });
 

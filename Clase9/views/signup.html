@@ -38,7 +38,8 @@
 
             <form 
               method="POST" 
-              action="http://localhost:4000/signup" 
+              action="http://localhost:4000/signup"
+              enctype="multipart/form-data"
               class="row g-3">
               
               <div class="mb-3 col-md-12">
@@ -50,6 +51,17 @@
                   name="name"
                   required="true"
                   placeholder="Ingrese el nombre del usuario">
+              </div>
+
+              <div class="mb-3 col-md-12">
+                <label for="exampleFormControlInput1" class="form-label">Avatar</label>
+                <input 
+                  type="file" 
+                  class="form-control" 
+                  id="avatar" 
+                  name="avatar"
+                  required="true"
+                  placeholder="Ingrese el avatar del usuario">
               </div>
               
               <div class="col-12">

@@ -6,6 +6,9 @@ const multer = require('multer');
 //Crear nuestra app de express
 const app = express();
 
+//Indicar al express que use EJS como motor de renders
+app.set('view engine', 'ejs');
+
 //Inicializar multer con dest como opción
 const uploadMiddleware = multer({ dest: 'public/uploads' });
 
@@ -23,6 +26,20 @@ const users = [
     {
        "id": 1,
        "name": "Senpai"
+    }
+];
+
+//Declaramos una variable para listar blogs
+const blogs = [
+    {
+        "id": 1,
+        "title": "Mi blog desde variable 1",
+        "description": "Mi blog descption desde variable 1"
+    },
+    {
+        "id": 2,
+        "title": "Mi blog desde variable 2",
+        "description": "Mi blog descption desde variable 2"
     }
 ];
 
@@ -75,6 +92,21 @@ app.get('/signup', function(req, res){
     res.sendFile(path.join(
         __dirname, 'views','signup.html'
     ));
+});
+
+//Definimos ruta /blogs GET
+app.get('/blogs', function(req, res){
+    //Mandamos el archivo blogs.html
+    res.render('blogs', {
+        "blog": {
+            "id": 2,
+            "title": "Mi blog desde variable 2 !!!! ",
+            "description": "Mi blog descption desde variable 2 asdasd"
+        }
+    });
+    // res.sendFile(path.join(
+    //     __dirname, 'views','blogs.html'
+    // ));
 });
 
 //Iniciar / escuchar en puerto XXXX

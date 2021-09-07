@@ -1,0 +1,20 @@
+<!-- BASE (HEAD, ASSETS, ETC) -->
+<%- include('base'); %>
+
+<!-- CONTENT -->
+<div class="max-w-2xl mx-auto mt-4 p-4 sm:p-6 bg-white border-2 border-gray-200 text-center">
+    <h2 class="pb-8 text-yellow-300" style="font-size: 1.5em;"><%= title %></h2>
+
+    <form action="/signup" method="POST">
+        <label>Usuario</label>
+        <input class="border-2 border-gray-200" type="text" name="usuario"><br />
+        <label>Nombre</label>
+        <input class="border-2 border-gray-200" type="text" name="nombre"><br />
+        <label>Clave</label>
+        <input class="border-2 border-gray-200" type="password" name="clave"><br />
+        <input type="submit" value="Registrar" />
+    </form>
+</div>
+
+<!-- FOOTER -->
+<%- include('footer'); %>

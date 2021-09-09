@@ -1,0 +1,53 @@
+<!-- BASE (HEAD, ASSETS, ETC) -->
+<%- include('base'); %>
+
+<!-- CONTENT -->
+<div class="max-w-2xl mx-auto mt-4 p-4 sm:p-6 bg-white border-2 border-gray-200">
+    <h2 class="pb-8 text-center" style="font-size: 1.5em;"><%= title %></h2>
+    
+    <div class="w-full max-w-xs mx-auto">
+        <form 
+            action="/login" 
+            method="POST">
+
+            <div class="mb-4">
+                <label 
+                    class="block text-gray-700 text-sm font-bold mb-2" 
+                    for="usuario">
+                  Usuario
+                </label>
+                <input 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    id="usuario"
+                    name="usuario"
+                    type="text" 
+                    placeholder="Usuario">
+            </div>
+
+            <div class="mb-4">
+                <label 
+                    class="block text-gray-700 text-sm font-bold mb-2" 
+                    for="clave">
+                  Clave
+                </label>
+                <input 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    id="clave"
+                    name="clave"
+                    type="password" 
+                    placeholder="Clave">
+            </div>
+
+            <div class="flex items-center justify-between">
+                <!-- <p>El usuario está en uso</p> -->
+                <button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                  Iniciar sesión
+                </button>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<%- include('footer'); %>

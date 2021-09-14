@@ -1,0 +1,52 @@
+<!-- BASE (HEAD, ASSETS, ETC) -->
+<%- include('base'); %>
+
+<!-- CONTENT -->
+<div class="max-w-2xl mx-auto mt-4 p-4 sm:p-6 bg-white border-2 border-gray-200">
+    <h2 class="pb-8 text-center" style="font-size: 1.5em;"><%= title %></h2>
+    
+    <div class="w-full max-w-xs mx-auto">
+        <form 
+            action="/calorias" 
+            method="POST">
+
+            <div class="mb-4">
+                <label 
+                    class="block text-gray-700 text-sm font-bold mb-2" 
+                    for="sem1">
+                  Semana 1
+                </label>
+                <input 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    id="sem1"
+                    name="sem1"
+                    type="number" 
+                    placeholder="Ingrese calorias semana 1">
+            </div>
+            <div class="mb-4">
+                <label 
+                    class="block text-gray-700 text-sm font-bold mb-2" 
+                    for="sem2">
+                  Semana 2
+                </label>
+                <input 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    id="sem2"
+                    name="sem2"
+                    type="number" 
+                    placeholder="Ingrese calorias semana 2">
+            </div>
+
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg"><%= mensaje %></h3>
+                <button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                  Calcular
+                </button>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<%- include('footer'); %>

@@ -1,0 +1,19 @@
+<!-- BASE (HEAD, ASSETS, ETC) -->
+<%- include('base'); %>
+
+<!-- CONTENT -->
+<div class="max-w-2xl mx-auto mt-4 p-4 sm:p-6 bg-white border-2 border-gray-200 text-center">
+    <h2 class="pb-8" style="font-size: 1.5em;"><%= title %></h2>
+    
+    <% productos.forEach(function(producto){ %>
+        <a href="/miproducto/<%= producto.id %>"><%= producto.titulo %></a>
+        <p>-------------</p>
+    <% }); %>
+
+    <% if(productos.length === 0){ %>
+        <p>No hay productos para mostrar</p>
+    <% } %>
+</div>
+
+<!-- FOOTER -->
+<%- include('footer'); %>
